@@ -1,8 +1,6 @@
-// Array para armazenar as tarefas
 let tasks = [];
 let editingTaskId = null;
 
-// Renderiza a lista de tarefas na tela
 function renderTasks() {
   const taskList = document.getElementById("taskList");
   taskList.innerHTML = "";
@@ -25,7 +23,7 @@ function renderTasks() {
     });
 }
 
-// Abre o formulário para adicionar uma nova tarefa
+// Abre o formulário de inclusão de tarefa
 function openAddTaskForm() {
   editingTaskId = null;
   document.getElementById("formTitle").innerText = "Incluir Tarefa";
@@ -35,12 +33,12 @@ function openAddTaskForm() {
   document.getElementById("taskDate").value = "";
 }
 
-// Fecha o formulário de tarefas
+// Fecha o formulário de tarefa
 function closeTaskForm() {
   document.getElementById("taskFormContainer").classList.add("hidden");
 }
 
-// Salva uma nova tarefa ou edita uma tarefa existente
+// Salva nova tarefa ou edição de tarefa
 function saveTask() {
   const name = document.getElementById("taskName").value;
   const cost = parseFloat(document.getElementById("taskCost").value);
@@ -77,7 +75,7 @@ function confirmDelete(id) {
   }
 }
 
-// Abre o formulário com os dados para edição de uma tarefa existente
+// Abre o formulário para edição de uma tarefa existente
 function editTask(id) {
   const task = tasks.find(task => task.id === id);
   document.getElementById("formTitle").innerText = "Editar Tarefa";
