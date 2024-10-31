@@ -1,8 +1,9 @@
-console.log("Script carregado com sucesso!");
+console.log("Script carregado com sucesso!"); // Verificação de carregamento
 
 let tasks = [];
 let editingTaskId = null;
 
+// Renderiza as tarefas na tela
 function renderTasks() {
   const taskList = document.getElementById("taskList");
   taskList.innerHTML = "";
@@ -27,9 +28,9 @@ function renderTasks() {
 
 // Abre o formulário de inclusão de tarefa
 function openAddTaskForm() {
-  editingTaskId = null;
+  editingTaskId = null; // Limpa a variável de edição
   document.getElementById("formTitle").innerText = "Incluir Tarefa";
-  document.getElementById("taskFormContainer").classList.remove("hidden");
+  document.getElementById("taskFormContainer").classList.remove("hidden"); // Mostra o formulário
   document.getElementById("taskName").value = "";
   document.getElementById("taskCost").value = "";
   document.getElementById("taskDate").value = "";
@@ -37,7 +38,7 @@ function openAddTaskForm() {
 
 // Fecha o formulário de tarefa
 function closeTaskForm() {
-  document.getElementById("taskFormContainer").classList.add("hidden");
+  document.getElementById("taskFormContainer").classList.add("hidden"); // Esconde o formulário
 }
 
 // Salva nova tarefa ou edição de tarefa
@@ -84,7 +85,7 @@ function editTask(id) {
   document.getElementById("taskName").value = task.name;
   document.getElementById("taskCost").value = task.cost;
   document.getElementById("taskDate").value = task.date;
-  document.getElementById("taskFormContainer").classList.remove("hidden");
+  document.getElementById("taskFormContainer").classList.remove("hidden"); // Mostra o formulário
   editingTaskId = id;
 }
 
