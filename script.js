@@ -1,3 +1,5 @@
+console.log("Script carregado com sucesso!");
+
 let tasks = [];
 let editingTaskId = null;
 
