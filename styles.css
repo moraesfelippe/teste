@@ -96,17 +96,17 @@ button#addTaskButton:hover {
 
 /* Formulário de Adição/Edição */
 #taskFormContainer {
-  /* Remova display: none aqui */
+  display: none; /* O formulário inicia escondido */
   background: #fff;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin-top: 20px;
+  margin-top: 15px; /* Distância acima do formulário */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .hidden {
-  display: none; /* Apenas mantenha essa classe para ocultar */
+  display: none; /* A classe hidden ainda esconde o formulário */
 }
 
 #taskFormContainer h3 {
