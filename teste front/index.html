@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tarefas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Lista de Tarefas</h1>
+    <form id="taskForm">
+      <input type="text" id="taskName" placeholder="Nome da tarefa" required />
+      <input type="number" id="taskCost" placeholder="Custo (R$)" required />
+      <input type="date" id="taskDate" placeholder="Data limite" required />
+      <input type="number" id="taskOrder" placeholder="Ordem de apresentação" required />
+      <button type="button" onclick="addTask()">Incluir</button>
+    </form>
+    <div class="task-list" id="taskList"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
