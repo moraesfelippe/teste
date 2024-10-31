@@ -7,7 +7,6 @@ function renderTasks() {
   const taskList = document.getElementById("taskList");
   taskList.innerHTML = "";
 
-  // Ordena e cria os elementos para cada tarefa
   tasks
     .sort((a, b) => a.order - b.order)
     .forEach((task, index) => {
@@ -48,7 +47,6 @@ function saveTask() {
   const date = document.getElementById("taskDate").value;
 
   if (editingTaskId) {
-    // Edição
     const task = tasks.find(task => task.id === editingTaskId);
     if (tasks.some(t => t.name === name && t.id !== editingTaskId)) {
       alert("Já existe uma tarefa com esse nome.");
@@ -58,7 +56,6 @@ function saveTask() {
     task.cost = cost;
     task.date = date;
   } else {
-    // Inclusão
     if (tasks.some(t => t.name === name)) {
       alert("Já existe uma tarefa com esse nome.");
       return;
