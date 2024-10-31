@@ -5,13 +5,12 @@ let draggedTaskId = null; // Variável para rastrear o ID da tarefa sendo arrast
 function renderTasks() {
   const taskList = document.getElementById("taskList");
   taskList.innerHTML = "";
-  
-  // Ordena e exibe as tarefas com suporte a arrastar e soltar
-  tasks.sort((a, b) => a.order - b.order).forEach(task => {
+
+  tasks.sort((a, b) => a.order - b.order).forEach((task, index) => {
     const taskItem = document.createElement("div");
     taskItem.className = "task-item";
-    taskItem.draggable = true; // Habilita o recurso de arrastar
-    taskItem.dataset.id = task.id; // Define o ID como um atributo de dados para rastreamento
+    taskItem.draggable = true;
+    taskItem.dataset.id = task.id;
     
     // Eventos de arrastar e soltar
     taskItem.addEventListener("dragstart", handleDragStart);
@@ -26,6 +25,8 @@ function renderTasks() {
       <div>
         <button onclick="editTask(${task.id})">Editar</button>
         <button onclick="deleteTask(${task.id})">Excluir</button>
+        <button onclick="moveTaskUp(${index})" ${index === 0 ? "disabled" : ""}>▲</button>
+        <button onclick="moveTaskDown(${index})" ${index === tasks.length - 1 ? "disabled" : ""}>▼</button>
       </div>
     `;
     taskList.appendChild(taskItem);
@@ -71,34 +72,49 @@ function editTask(id) {
 }
 
 /* Funções para arrastar e soltar */
-
 function handleDragStart(event) {
-  draggedTaskId = event.target.dataset.id; // Armazena o ID da tarefa sendo arrastada
-  event.target.classList.add("dragged"); // Adiciona a classe para feedback visual
+  draggedTaskId = event.target.dataset.id;
+  event.target.classList.add("dragged");
 }
 
 function handleDragOver(event) {
-  event.preventDefault(); // Permite o evento de soltar
-  event.target.classList.add("over"); // Adiciona uma borda visual para o item de destino
+  event.preventDefault();
+  event.target.classList.add("over");
 }
 
 function handleDrop(event) {
   event.preventDefault();
-  const targetId = event.target.closest(".task-item").dataset.id; // Obtém o ID do item onde foi solto
+  const targetId = event.target.closest(".task-item").dataset.id;
   const draggedTaskIndex = tasks.findIndex(task => task.id == draggedTaskId);
   const targetTaskIndex = tasks.findIndex(task => task.id == targetId);
 
-  // Reordena as tarefas no array
   const [draggedTask] = tasks.splice(draggedTaskIndex, 1);
   tasks.splice(targetTaskIndex, 0, draggedTask);
 
-  // Atualiza a propriedade de ordem
   tasks.forEach((task, index) => (task.order = index + 1));
 
-  renderTasks(); // Atualiza a exibição
+  renderTasks();
 }
 
 function handleDragEnd(event) {
-  event.target.classList.remove("dragged"); // Remove a classe de opacidade
-  document.querySelectorAll(".task-item").forEach(item => item.classList.remove("over")); // Remove bordas
+  event.target.classList.remove("dragged");
+  document.querySelectorAll(".task-item").forEach(item => item.classList.remove("over"));
+}
+
+/* Funções para mover as tarefas com botões */
+
+function moveTaskUp(index) {
+  if (index > 0) {
+    [tasks[index - 1], tasks[index]] = [tasks[index], tasks[index - 1]]; // Troca as posições
+    tasks.forEach((task, i) => (task.order = i + 1)); // Atualiza a ordem
+    renderTasks();
+  }
+}
+
+function moveTaskDown(index) {
+  if (index < tasks.length - 1) {
+    [tasks[index], tasks[index + 1]] = [tasks[index + 1], tasks[index]]; // Troca as posições
+    tasks.forEach((task, i) => (task.order = i + 1)); // Atualiza a ordem
+    renderTasks();
+  }
 }
