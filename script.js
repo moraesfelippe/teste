@@ -1,4 +1,5 @@
 let tasks = [];
+let editingTaskId = null; // Variável para rastrear o ID da tarefa sendo editada
 
 function renderTasks() {
   const taskList = document.getElementById("taskList");
@@ -24,10 +25,22 @@ function addTask() {
   const taskCost = document.getElementById("taskCost").value;
   const taskDate = document.getElementById("taskDate").value;
   const taskOrder = document.getElementById("taskOrder").value;
-  const id = Date.now();
-  const task = { id, name: taskName, cost: taskCost, date: taskDate, order: parseInt(taskOrder) };
 
-  tasks.push(task);
+  if (editingTaskId) {
+    // Se estamos editando, encontre e atualize a tarefa existente
+    const task = tasks.find(task => task.id === editingTaskId);
+    task.name = taskName;
+    task.cost = taskCost;
+    task.date = taskDate;
+    task.order = parseInt(taskOrder);
+    editingTaskId = null; // Limpa o ID de edição
+  } else {
+    // Se não estamos editando, adicione uma nova tarefa
+    const id = Date.now();
+    const task = { id, name: taskName, cost: taskCost, date: taskDate, order: parseInt(taskOrder) };
+    tasks.push(task);
+  }
+
   renderTasks();
   document.getElementById("taskForm").reset();
 }
@@ -44,5 +57,5 @@ function editTask(id) {
   document.getElementById("taskDate").value = task.date;
   document.getElementById("taskOrder").value = task.order;
   
-  deleteTask(id);
+  editingTaskId = id; // Define o ID da tarefa que está sendo editada
 }
