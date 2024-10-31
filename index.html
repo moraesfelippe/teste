@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Tarefas</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div id="taskListContainer">
     <h2>Lista de Tarefas</h2>
     <div id="taskList"></div>
-    <button id="addTaskButton" onclick="openAddTaskForm()">Incluir Tarefa</button>
+    <button id="addTaskButton" onclick="openAddTaskForm()">+ Incluir Tarefa</button>
   </div>
 
-  <!-- Formulário de Adição/Edição -->
+  <!-- Formulário de Incluir/Editar Tarefa -->
   <div id="taskFormContainer" class="hidden">
     <h3 id="formTitle">Incluir Tarefa</h3>
-    <label for="taskName">Nome da Tarefa</label>
+    <label for="taskName">Nome da Tarefa:</label>
     <input type="text" id="taskName" required>
     
-    <label for="taskCost">Custo (R$)</label>
-    <input type="number" id="taskCost" required>
-    
-    <label for="taskDate">Data Limite</label>
+    <label for="taskCost">Custo (R$):</label>
+    <input type="number" id="taskCost" required min="0">
+
+    <label for="taskDate">Data Limite:</label>
     <input type="date" id="taskDate" required>
 
     <button onclick="saveTask()">Salvar</button>
