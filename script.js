@@ -27,6 +27,7 @@ function renderTasks() {
 }
 
 // Abre o formulário de inclusão de tarefa
+// Função para abrir o formulário de inclusão de tarefa
 function openAddTaskForm() {
   editingTaskId = null; // Limpa a variável de edição
   document.getElementById("formTitle").innerText = "Incluir Tarefa";
@@ -36,7 +37,7 @@ function openAddTaskForm() {
   document.getElementById("taskDate").value = "";
 }
 
-// Fecha o formulário de tarefa
+// Função para fechar o formulário
 function closeTaskForm() {
   document.getElementById("taskFormContainer").classList.add("hidden"); // Esconde o formulário
 }
