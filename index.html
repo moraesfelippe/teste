@@ -8,26 +8,27 @@
 </head>
 <body>
   <div id="taskListContainer">
-    <h2>Lista de Tarefas</h2>
-    <div id="taskList"></div>
-    <button id="addTaskButton" onclick="openAddTaskForm()">+ Incluir Tarefa</button>
-  </div>
+  <h2>Lista de Tarefas</h2>
+  <div id="taskList"></div>
+  
+  <button id="addTaskButton">Incluir Tarefa</button>
 
   <!-- Formulário de Incluir/Editar Tarefa -->
-  <div id="taskFormContainer" class="hidden">
+   <div id="taskFormContainer" class="hidden">
     <h3 id="formTitle">Incluir Tarefa</h3>
     <label for="taskName">Nome da Tarefa:</label>
     <input type="text" id="taskName" required>
     
     <label for="taskCost">Custo (R$):</label>
-    <input type="number" id="taskCost" required min="0">
-
+    <input type="number" id="taskCost" required>
+    
     <label for="taskDate">Data Limite:</label>
     <input type="date" id="taskDate" required>
-
-    <button onclick="saveTask()">Salvar</button>
-    <button onclick="closeTaskForm()">Cancelar</button>
+    
+    <button id="saveTaskButton">Salvar</button>
+    <button id="cancelTaskButton" onclick="closeTaskForm()">Cancelar</button>
   </div>
+</div>
 
   <script src="./script.js"></script>
 </body>
