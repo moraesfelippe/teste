@@ -48,7 +48,7 @@ h2 {
 }
 
 .task-item.highlight {
-  background-color: #fffae5;
+  background-color: #fffae5; /* Destaca tarefas com custo >= 1000 */
 }
 
 .task-item span {
@@ -96,7 +96,7 @@ button#addTaskButton:hover {
 
 /* Formulário de Adição/Edição */
 #taskFormContainer {
-  display: none;
+  /* Remova display: none aqui */
   background: #fff;
   padding: 20px;
   border: 1px solid #ddd;
@@ -106,7 +106,7 @@ button#addTaskButton:hover {
 }
 
 .hidden {
-  display: none;
+  display: none; /* Apenas mantenha essa classe para ocultar */
 }
 
 #taskFormContainer h3 {
